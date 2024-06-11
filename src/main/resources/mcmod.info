@@ -1,0 +1,16 @@
+[
+{
+  "modid": "milky",
+  "name": "Milky",
+  "description": "A simple mod that adds fluid milk.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/Mesabrook-Development-Team/Milky",
+  "updateUrl": "",
+  "authorList": ["RavenholmZombie", "CSX8600"],
+  "credits": "CSX8600 for the idea",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
