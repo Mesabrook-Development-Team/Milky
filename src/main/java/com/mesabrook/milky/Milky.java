@@ -63,7 +63,7 @@ public class Milky
         if(Loader.isModLoaded("immersiveengineering"))
         {
         	logger.info("[" + MOD_NAME + "] Immersive Engineering detected. Bottling Machine recipe added.");
-        	IERecipes.registerBottlingMachineRecipes();
+        	IERecipes.registerMachineRecipes();
         }
         
         MinecraftForge.EVENT_BUS.register(new ModEvents());

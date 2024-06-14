@@ -11,13 +11,13 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class IERecipes 
 {
-	public static void registerBottlingMachineRecipes()
+	public static void registerMachineRecipes()
 	{
 		// Fluid Stacks
 		FluidStack milk_bucket = new FluidStack(ModFluids.liquid_milk, 1000);
 		FluidStack milk_bottle = new FluidStack(ModFluids.liquid_milk, 256);
 		
-		// Bottling Machine Recipes Try/Catch
+		// Recipes Try/Catch
 		try
 		{
 			BottlingMachineRecipe.addRecipe(new ItemStack(Items.MILK_BUCKET, 1), Items.BUCKET, milk_bucket);
