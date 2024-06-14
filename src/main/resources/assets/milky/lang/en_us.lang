@@ -1,0 +1,9 @@
+#Config
+milky.config.title=Milky mod config
+
+#Fluid
+fluid.liquid_milk=Milk
+fluid.milky:liquid_milk.name=Milk
+
+#Items
+item.milk_bottle.name=Milk Bottle
