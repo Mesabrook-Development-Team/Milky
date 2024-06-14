@@ -8,10 +8,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -60,6 +62,9 @@ public class ItemMilkBottle extends ItemFood implements IHasModel
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         if (!worldIn.isRemote && stack.getItem() == ModItems.MILK_BOTTLE) entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
+        if (!worldIn.isRemote && stack.getItem() == ModItems.CHOC_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3064, 0));
+        if (!worldIn.isRemote && stack.getItem() == ModItems.STRAWB_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 2064, 0));
+        if (!worldIn.isRemote && stack.getItem() == ModItems.CARAMEL_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 3064, 0));
         
         if (entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).capabilities.isCreativeMode) 
         {
