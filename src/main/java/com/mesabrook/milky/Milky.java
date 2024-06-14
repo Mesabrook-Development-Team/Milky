@@ -62,7 +62,7 @@ public class Milky
         
         if(Loader.isModLoaded("immersiveengineering"))
         {
-        	logger.info("[" + MOD_NAME + "] Immersive Engineering detected. Bottling Machine recipe added.");
+        	logger.info("[" + MOD_NAME + "] Immersive Engineering detected. Machine recipes added.");
         	IERecipes.registerMachineRecipes();
         }
         

@@ -27,7 +27,7 @@ public class ClientProxy extends CommonProxy
 	}
 
 	@Override
-	public void Init() 
+	public void Init()  
 	{
 
 	}
@@ -41,6 +41,9 @@ public class ClientProxy extends CommonProxy
 	public static void registerModels(ModelRegistryEvent event) 
 	{
 		registerFluidModel(ModFluids.liquid_milk);
+		registerFluidModel(ModFluids.liquid_chocolate_milk);
+		registerFluidModel(ModFluids.liquid_strawberry_milk);
+		registerFluidModel(ModFluids.liquid_caramel_milk);
 	}
 
 	private static final String FLUID_MODEL_PATH = Milky.MOD_PREFIX + "fluid_block";

@@ -10,6 +10,27 @@
 					"fluid": "liquid_milk"
 				}
 			}
+		],
+		"liquid_chocolate_milk": [
+			{
+				"custom": {
+					"fluid": "liquid_chocolate_milk"
+				}
+			}
+		],
+		"liquid_strawberry_milk": [
+			{
+				"custom": {
+					"fluid": "liquid_strawberry_milk"
+				}
+			}
+		],
+		"liquid_caramel_milk": [
+			{
+				"custom": {
+					"fluid": "liquid_caramel_milk"
+				}
+			}
 		]
 	}
 }

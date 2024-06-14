@@ -4,6 +4,15 @@ milky.config.title=Milky mod config
 #Fluid
 fluid.liquid_milk=Milk
 fluid.milky:liquid_milk.name=Milk
+fluid.liquid_chocolate_milk=Chocolate Milk
+fluid.milky:liquid_chocolate_milk.name=Chocolate Milk
+fluid.liquid_strawberry_milk=Strawberry Milk
+fluid.milky:liquid_strawberry_milk.name=Strawberry Milk
+fluid.liquid_caramel_milk=Caramel Milk
+fluid.milky:liquid_caramel_milk.name=Caramel Milk
 
 #Items
 item.milk_bottle.name=Milk Bottle
+item.chocolate_milk_bottle.name=Chocolate Milk Bottle
+item.strawberry_milk_bottle.name=Strawberry Milk Bottle
+item.caramel_milk_bottle.name=Caramel Milk Bottle

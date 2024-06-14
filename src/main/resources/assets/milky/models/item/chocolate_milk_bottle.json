@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "milky:items/chocolate_milk_bottle"
+  }
+}
