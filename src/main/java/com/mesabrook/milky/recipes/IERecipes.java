@@ -66,16 +66,16 @@ public class IERecipes
 						ModUtils.getItemStackFromOreDictionary("foodCaramel", 10)
 				};
 			
-			// Mixer Recipes for making flavored milks.
-			MixerRecipe.addRecipe(chocolate_milk_bucket, milk_bucket, itemInputChocolateMilk, 2500);
-			MixerRecipe.addRecipe(strawberry_milk_bucket, milk_bucket, itemInputStrawberryMilk, 2500);
-			MixerRecipe.addRecipe(caramel_milk_bucket, milk_bucket, itemInputCaramelMilk, 2500);
-			
 			// Harvestcraft integration
 			if(Loader.isModLoaded("harvestcraft"))
 			{
-				Milky.logger.info("[" + Milky.MOD_NAME + "] Pam's Harvestcraft Detected. Recipes registered.");
+				Milky.logger.info("[" + Milky.MOD_NAME + "] Pam's Harvestcraft Detected. IE Squeezer and Mixer recipes registered.");
+				
 				SqueezerRecipe.addRecipe(milk_bucket, ModUtils.getItemStackFromOreDictionary("cropSoybean", 1), ModUtils.getItemStackFromOreDictionary("cropSoybean", 16), 1000);
+				// Mixer Recipes for making flavored milks.
+				MixerRecipe.addRecipe(chocolate_milk_bucket, milk_bucket, itemInputChocolateMilk, 2500);
+				MixerRecipe.addRecipe(strawberry_milk_bucket, milk_bucket, itemInputStrawberryMilk, 2500);
+				MixerRecipe.addRecipe(caramel_milk_bucket, milk_bucket, itemInputCaramelMilk, 2500);
 			}
 		}
 		catch(Exception ex)

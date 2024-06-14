@@ -1,6 +1,7 @@
 package com.mesabrook.milky.item;
 
 import com.mesabrook.milky.Milky;
+import com.mesabrook.milky.config.ModConfig;
 import com.mesabrook.milky.handlers.IHasModel;
 import com.mesabrook.milky.init.ModItems;
 
@@ -62,9 +63,12 @@ public class ItemMilkBottle extends ItemFood implements IHasModel
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         if (!worldIn.isRemote && stack.getItem() == ModItems.MILK_BOTTLE) entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
-        if (!worldIn.isRemote && stack.getItem() == ModItems.CHOC_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3064, 0));
-        if (!worldIn.isRemote && stack.getItem() == ModItems.STRAWB_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 2064, 0));
-        if (!worldIn.isRemote && stack.getItem() == ModItems.CARAMEL_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 3064, 0));
+        if(ModConfig.general.flavoredMilkPotionEffects)
+        {
+        	if (!worldIn.isRemote && stack.getItem() == ModItems.CHOC_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3064, 0));
+            if (!worldIn.isRemote && stack.getItem() == ModItems.STRAWB_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 2064, 0));
+            if (!worldIn.isRemote && stack.getItem() == ModItems.CARAMEL_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 3064, 0));
+        }
         
         if (entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).capabilities.isCreativeMode) 
         {

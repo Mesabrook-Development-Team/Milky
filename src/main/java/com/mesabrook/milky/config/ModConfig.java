@@ -2,6 +2,7 @@ package com.mesabrook.milky.config;
 
 import com.mesabrook.milky.Milky;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,7 +16,8 @@ public class ModConfig {
 
     public static class General
     {
-    	
+    	@Comment("Should the flavored milks (chocolate, strawberry, and caramel) give potion effects when used? [default: true]")
+    	public boolean flavoredMilkPotionEffects = true;
     }
 
     @Mod.EventBusSubscriber(modid = Milky.MOD_ID)
