@@ -30,3 +30,9 @@ A simply dairy mod that adds liquid milk. May cause stomach troubles in players 
 
 <hr>
 <img src="https://i.ibb.co/Bw3xYZj/new-logo.png" width=30> Developed by the Mesabrook Development Team.
+
+### Mod Info
+* Mod ID: `milky`
+* Developer/s: `RavenholmZombie`
+* MC Version: `1.12.2`
+* Forge Version: `14.23.5.2820`
