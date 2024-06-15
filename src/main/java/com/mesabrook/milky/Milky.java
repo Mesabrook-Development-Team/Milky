@@ -2,6 +2,7 @@ package com.mesabrook.milky;
 
 import com.mesabrook.milky.config.ModConfig;
 import com.mesabrook.milky.handlers.ModEvents;
+import com.mesabrook.milky.init.ModFluids;
 import com.mesabrook.milky.init.ModItems;
 import com.mesabrook.milky.item.ItemMilkBottle;
 import com.mesabrook.milky.proxy.CommonProxy;
@@ -10,16 +11,21 @@ import com.mesabrook.milky.recipes.IERecipes;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -69,5 +75,22 @@ public class Milky
         }
         
         MinecraftForge.EVENT_BUS.register(new ModEvents());
+    }
+    
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {
+    	logger.info("[" + MOD_NAME + "] Mod Post Initialization.");
+    	logger.info("[" + MOD_NAME + "] Registering Universal Bucket with Ore Dictionary.");
+    	try
+    	{
+            OreDictionary.registerOre("listAllmilk", FluidUtil.getFilledBucket(new FluidStack(ModFluids.liquid_milk, Fluid.BUCKET_VOLUME)));
+            logger.info("[" + MOD_NAME + "] Universal Bucket Registered in Ore Dictionary.");
+    	}
+    	catch(Exception ex)
+    	{
+    		logger.info("[" + MOD_NAME + "] ERROR! Unable to register Universal Bucket in the Ore Dictionary!" + ex);
+    		ex.printStackTrace();
+    	}
     }
 }

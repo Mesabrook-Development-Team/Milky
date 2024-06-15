@@ -91,11 +91,7 @@ public class ModFluids
     {
         fluid.setUnlocalizedName(Milky.MOD_PREFIX + fluid.getName());
         FluidRegistry.registerFluid(fluid);
-        
-        if(!(fluid instanceof FluidMilk)) 
-        {
-        	FluidRegistry.addBucketForFluid(fluid);
-        }
+        FluidRegistry.addBucketForFluid(fluid);
 
         return fluid;
     }
