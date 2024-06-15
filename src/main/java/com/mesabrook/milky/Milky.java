@@ -49,6 +49,7 @@ public class Milky
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+    	logger.info("[" + MOD_NAME + "] Mod Pre-Initialization.");
         logger.info("[" + MOD_NAME + "] Registering Milky config.");
         MinecraftForge.EVENT_BUS.register(new ModConfig());
 
@@ -59,6 +60,7 @@ public class Milky
     public void init(FMLInitializationEvent event)
     {
         proxy.Init();
+        logger.info("[" + MOD_NAME + "] Mod Initialization.");
         
         if(Loader.isModLoaded("immersiveengineering"))
         {
