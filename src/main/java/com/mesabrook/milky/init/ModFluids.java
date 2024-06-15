@@ -98,10 +98,10 @@ public class ModFluids
 
     public static BlockFluidBase registerClassicBlock(IForgeRegistry<Block> registry, Fluid fluid) 
     {
-    	if(fluid == liquid_milk) return registerBlock(registry, new BlockLiquidMilk(fluid, net.minecraft.block.material.Material.WATER), fluid.getName());
-    	if(fluid == liquid_chocolate_milk) return registerBlock(registry, new BlockChocolateMilk(fluid, net.minecraft.block.material.Material.WATER), fluid.getName());
-    	if(fluid == liquid_strawberry_milk) return registerBlock(registry, new BlockStrawberryMilk(fluid, net.minecraft.block.material.Material.WATER), fluid.getName());
-    	if(fluid == liquid_caramel_milk) return registerBlock(registry, new BlockCaramelMilk(fluid, net.minecraft.block.material.Material.WATER), fluid.getName());
+    	if(fluid == liquid_milk) return registerBlock(registry, new BlockLiquidMilk(fluid, ModMaterials.MILK), fluid.getName());
+    	if(fluid == liquid_chocolate_milk) return registerBlock(registry, new BlockChocolateMilk(fluid, ModMaterials.CHOC_MILK), fluid.getName());
+    	if(fluid == liquid_strawberry_milk) return registerBlock(registry, new BlockStrawberryMilk(fluid, ModMaterials.STRAWBERRY_MILK), fluid.getName());
+    	if(fluid == liquid_caramel_milk) return registerBlock(registry, new BlockCaramelMilk(fluid, ModMaterials.CARAMEL_MILK), fluid.getName());
     	
     	return null;
     }

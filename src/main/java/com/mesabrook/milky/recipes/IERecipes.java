@@ -9,27 +9,37 @@ import blusunrize.immersiveengineering.api.crafting.BottlingMachineRecipe;
 import blusunrize.immersiveengineering.api.crafting.MixerRecipe;
 import blusunrize.immersiveengineering.api.crafting.SqueezerRecipe;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraft.util.ResourceLocation;
 
 public class IERecipes 
 {
 	public static void registerMachineRecipes()
 	{
 		// Fluid Stacks - Buckets
-		FluidStack milk_bucket = new FluidStack(ModFluids.liquid_milk, 1000);
-		FluidStack chocolate_milk_bucket = new FluidStack(ModFluids.liquid_chocolate_milk, 1000);
-		FluidStack strawberry_milk_bucket = new FluidStack(ModFluids.liquid_strawberry_milk, 1000);
-		FluidStack caramel_milk_bucket = new FluidStack(ModFluids.liquid_caramel_milk, 1000);
+		FluidStack milk_bucket = new FluidStack(ModFluids.liquid_milk, Fluid.BUCKET_VOLUME);
+		FluidStack chocolate_milk_bucket = new FluidStack(ModFluids.liquid_chocolate_milk, Fluid.BUCKET_VOLUME);
+		FluidStack strawberry_milk_bucket = new FluidStack(ModFluids.liquid_strawberry_milk, Fluid.BUCKET_VOLUME);
+		FluidStack caramel_milk_bucket = new FluidStack(ModFluids.liquid_caramel_milk, Fluid.BUCKET_VOLUME);
 		
 		// Fluid Stacks - Bottles
 		FluidStack milk_bottle = new FluidStack(ModFluids.liquid_milk, 250);
 		FluidStack choc_milk_bottle = new FluidStack(ModFluids.liquid_chocolate_milk, 250);
 		FluidStack straw_milk_bottle = new FluidStack(ModFluids.liquid_strawberry_milk, 250);
 		FluidStack caramel_milk_bottle = new FluidStack(ModFluids.liquid_caramel_milk, 250);
+		
+		if(Loader.isModLoaded("harvestcraft"))
+		{
+			Item phcFreshMilkBucket = ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "freshmilkitem"));
+			BottlingMachineRecipe.addRecipe(new ItemStack(phcFreshMilkBucket, 8), Items.BOWL, milk_bucket);
+		}
 		
 		// Recipes Try/Catch
 		try

@@ -9,12 +9,15 @@ import com.mesabrook.milky.proxy.CommonProxy;
 import com.mesabrook.milky.recipes.IERecipes;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -80,16 +83,23 @@ public class Milky
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-    	logger.info("[" + MOD_NAME + "] Mod Post Initialization.");
-    	logger.info("[" + MOD_NAME + "] Registering Universal Bucket with Ore Dictionary.");
+    	logger.info("[" + MOD_NAME + "] OreDict: Registering Milk Bottles...");
+    	OreDictionary.registerOre("listAllmilk", ModItems.MILK_BOTTLE);
+    	OreDictionary.registerOre("listAllchocolatemilk", ModItems.CHOC_MILK_BOTTLE);
+    	OreDictionary.registerOre("listAllstrawberrymilk", ModItems.STRAWB_MILK_BOTTLE);
+    	OreDictionary.registerOre("listAllcaramelmilk", ModItems.CARAMEL_MILK_BOTTLE);
+    	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bottles.");
+    	
     	try
     	{
-            OreDictionary.registerOre("listAllmilk", FluidUtil.getFilledBucket(new FluidStack(ModFluids.liquid_milk, Fluid.BUCKET_VOLUME)));
-            logger.info("[" + MOD_NAME + "] Universal Bucket Registered in Ore Dictionary.");
+    		logger.info("[" + MOD_NAME + "] OreDict: Attempting to register Milk universal bucket...");
+        	ItemStack milkBucket = FluidUtil.getFilledBucket(new FluidStack(ModFluids.liquid_milk, Fluid.BUCKET_VOLUME));
+        	OreDictionary.registerOre("listAllmilk", milkBucket);
+        	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bucket.");
     	}
-    	catch(Exception ex)
+    	catch (Exception ex)
     	{
-    		logger.info("[" + MOD_NAME + "] ERROR! Unable to register Universal Bucket in the Ore Dictionary!" + ex);
+    		logger.error("[" + MOD_NAME + "] OreDict ERROR: Unable to register Milk Bucket " + ex);
     		ex.printStackTrace();
     	}
     }

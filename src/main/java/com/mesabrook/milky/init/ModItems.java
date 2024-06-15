@@ -3,9 +3,13 @@ package com.mesabrook.milky.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mesabrook.milky.Milky;
+import com.mesabrook.milky.item.GenericItem;
 import com.mesabrook.milky.item.ItemMilkBottle;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 
 public class ModItems
 {
