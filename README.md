@@ -23,6 +23,7 @@ A simply dairy mod that adds liquid milk. May cause stomach troubles in players 
 * Immersive Engineering
   * The Mixer is required to make flavored milks.
   * The Squeezer can squeeze Pam's Harvestcraft Soy Beans to make Milk.
+  * The Bottling Machine can fill Buckets and Bottles with Milk and flavored milks.
 
 ## Planned Features 👀
 * An automated milking machine block that'll extract milk from any Cow that's standing on top of it.
