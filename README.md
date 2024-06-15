@@ -27,6 +27,7 @@ A simply dairy mod that adds liquid milk. May cause stomach troubles in players 
 
 ## Planned Features 👀
 * An automated milking machine block that'll extract milk from any Cow that's standing on top of it.
+* The ability to milk other animals (Sheep and potentially Llamas).
 
 <hr>
 <img src="https://i.ibb.co/Bw3xYZj/new-logo.png" width=30> Developed by the Mesabrook Development Team.
