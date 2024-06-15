@@ -10,12 +10,13 @@ A simply dairy mod that adds liquid milk. May cause stomach troubles in players 
   * Chocolate Milk: Gives Fire Resistance I.
   * Strawberry Milk: Gives Jump Boost I.
   * Caramel Milk: Gives Health Boost I.
+* You can milk cows, sheep, and llamas to get milk.
 
 <i>You can disable the potion effects in Milky's config file</i>
 
 ## Known Issues
 * Right-clicking any milk fluid with a Glass Bottle gives the player a Water Bottle.
-* The vanilla Milk Bucket does not behave properly with tanks. ASM will be needed to fix this by completely replacing the normal Milk Bucket with our own.
+* ~~The vanilla Milk Bucket does not behave properly with tanks. ASM will be needed to fix this by completely replacing the normal Milk Bucket with our own.~~ Fixed
 
 ## Compatibility
 * Pam's Harvestcraft
@@ -27,7 +28,8 @@ A simply dairy mod that adds liquid milk. May cause stomach troubles in players 
 
 ## Planned Features 👀
 * An automated milking machine block that'll extract milk from any Cow that's standing on top of it.
-* The ability to milk other animals (Sheep and potentially Llamas).
+* ~~The ability to milk other animals (Sheep and potentially Llamas).~~ Implemented.
+* Ways of making the flavored milks without Immersive Engineering and Pam's Harvestcraft.
 
 <hr>
 <img src="https://i.ibb.co/Bw3xYZj/new-logo.png" width=30> Developed by the Mesabrook Development Team.
