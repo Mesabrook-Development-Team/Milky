@@ -35,17 +35,17 @@ public class IERecipes
 		FluidStack straw_milk_bottle = new FluidStack(ModFluids.liquid_strawberry_milk, 250);
 		FluidStack caramel_milk_bottle = new FluidStack(ModFluids.liquid_caramel_milk, 250);
 		
-		if(Loader.isModLoaded("harvestcraft"))
+		if(Loader.isModLoaded("harvestcraft")) 
 		{
 			Item phcFreshMilkBucket = ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "freshmilkitem"));
-			BottlingMachineRecipe.addRecipe(new ItemStack(phcFreshMilkBucket, 8), Items.BOWL, milk_bucket);
+			BottlingMachineRecipe.addRecipe(new ItemStack(phcFreshMilkBucket, 2), Items.BOWL, milk_bucket);
 		}
 		
 		// Recipes Try/Catch
 		try
 		{
 			// Bottling Machine Recipes - Buckets
-			BottlingMachineRecipe.addRecipe(new ItemStack(Items.MILK_BUCKET, 1), Items.BUCKET, milk_bucket);
+			BottlingMachineRecipe.addRecipe(FluidUtil.getFilledBucket(milk_bucket), Items.BUCKET, milk_bucket);
 			BottlingMachineRecipe.addRecipe(FluidUtil.getFilledBucket(chocolate_milk_bucket), Items.BUCKET, chocolate_milk_bucket);
 			BottlingMachineRecipe.addRecipe(FluidUtil.getFilledBucket(strawberry_milk_bucket), Items.BUCKET, strawberry_milk_bucket);
 			BottlingMachineRecipe.addRecipe(FluidUtil.getFilledBucket(caramel_milk_bucket), Items.BUCKET, caramel_milk_bucket);
