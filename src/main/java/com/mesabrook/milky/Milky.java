@@ -42,7 +42,7 @@ public class Milky
     public static final String MOD_ID = "milky";
     public static final String MOD_NAME = "Milky";
     public static final String MOD_PREFIX = MOD_ID + ":";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.0.1";
     public static final String ACCEPTED_VERSIONS = "[1.12.2]";
     public static final String CLIENT_PROXY_CLASS = "com.mesabrook.milky.proxy.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "com.mesabrook.milky.proxy.ServerProxy";
