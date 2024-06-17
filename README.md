@@ -15,7 +15,7 @@ A simply dairy mod that adds liquid milk. May cause stomach troubles in players 
 <i>You can disable the potion effects in Milky's config file</i>
 
 ## Known Issues
-* Right-clicking any milk fluid with a Glass Bottle gives the player a Water Bottle.
+* ~~Right-clicking any milk fluid with a Glass Bottle gives the player a Water Bottle.~~ Fixed
 * ~~The vanilla Milk Bucket does not behave properly with tanks. ASM will be needed to fix this by completely replacing the normal Milk Bucket with our own.~~ Fixed
 
 ## Compatibility
