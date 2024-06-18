@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "IBI",
+    "III"
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+	  "ore": "ingotSteel"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "blockIron"
+    },
+    "B": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "result": {
+    "item": "milky:milking_machine",
+    "count": 1
+  }
+}

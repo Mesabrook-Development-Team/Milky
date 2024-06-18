@@ -1,22 +1,30 @@
 package com.mesabrook.milky;
 
+import com.mesabrook.milky.client.MilkingMachineTextOverlay;
 import com.mesabrook.milky.config.ModConfig;
 import com.mesabrook.milky.handlers.ModEvents;
 import com.mesabrook.milky.init.ModFluids;
 import com.mesabrook.milky.init.ModItems;
-import com.mesabrook.milky.item.ItemMilkBottle;
+import com.mesabrook.milky.init.ModTileEntities;
+import com.mesabrook.milky.item.*;
 import com.mesabrook.milky.proxy.CommonProxy;
 import com.mesabrook.milky.recipes.IERecipes;
+import com.mesabrook.milky.recipes.ModRecipes;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.common.crafting.IRecipeFactory;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +37,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegistryManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -76,8 +86,15 @@ public class Milky
         	logger.info("[" + MOD_NAME + "] Immersive Engineering detected. Machine recipes added.");
         	IERecipes.registerMachineRecipes();
         }
+        else
+        {
+        	// Load the custom recipes since player doesn't have IE or PHC installed.
+        }
         
         MinecraftForge.EVENT_BUS.register(new ModEvents());
+        
+        ModRecipes.registerSmeltingRecipes();
+        ModTileEntities.registerTileEntities();
     }
     
     @EventHandler
@@ -88,19 +105,6 @@ public class Milky
     	OreDictionary.registerOre("listAllchocolatemilk", ModItems.CHOC_MILK_BOTTLE);
     	OreDictionary.registerOre("listAllstrawberrymilk", ModItems.STRAWB_MILK_BOTTLE);
     	OreDictionary.registerOre("listAllcaramelmilk", ModItems.CARAMEL_MILK_BOTTLE);
-    	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bottles.");
-    	
-    	try
-    	{
-    		logger.info("[" + MOD_NAME + "] OreDict: Attempting to register Milk universal bucket...");
-        	ItemStack milkBucket = FluidUtil.getFilledBucket(new FluidStack(ModFluids.liquid_milk, Fluid.BUCKET_VOLUME));
-        	OreDictionary.registerOre("listAllmilk", milkBucket);
-        	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bucket.");
-    	}
-    	catch (Exception ex)
-    	{
-    		logger.error("[" + MOD_NAME + "] OreDict ERROR: Unable to register Milk Bucket " + ex);
-    		ex.printStackTrace();
-    	}
+    	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bottles.");    	
     }
 }

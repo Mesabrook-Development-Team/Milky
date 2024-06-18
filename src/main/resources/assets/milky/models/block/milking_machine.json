@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "blocks/concrete_silver",
+       "up": "milky:blocks/mm_top",
+       "down": "milky:blocks/mm_bottom",
+       "south": "milky:blocks/mm_side",
+       "north": "milky:blocks/mm_side",
+       "west": "milky:blocks/mm_side",
+       "east": "milky:blocks/mm_side"
+   }
+}
