@@ -21,14 +21,14 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemMilkBottle extends ItemFood implements IHasModel
+public class FoodItem extends ItemFood implements IHasModel
 {
-	public ItemMilkBottle(String name)
+	public FoodItem(String name, int amount, float saturation, int stackSize)
 	{
 		super(0, 0.0F, false);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setMaxStackSize(1);
+		setMaxStackSize(stackSize);
 		setCreativeTab(CreativeTabs.FOOD);
 		
 		ModItems.ITEMS.add(this);
@@ -49,7 +49,14 @@ public class ItemMilkBottle extends ItemFood implements IHasModel
     @Override
     public EnumAction getItemUseAction(ItemStack itemStack)
     {
-    	return EnumAction.DRINK;
+    	if(itemStack.getUnlocalizedName().contains("bottle"))
+    	{
+    		return EnumAction.DRINK;
+    	}
+    	else
+    	{
+    		return EnumAction.EAT;
+    	}
     }
     
     @Override
