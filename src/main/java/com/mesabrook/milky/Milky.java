@@ -11,6 +11,7 @@ import com.mesabrook.milky.proxy.CommonProxy;
 import com.mesabrook.milky.recipes.IERecipes;
 import com.mesabrook.milky.recipes.ModRecipes;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -64,6 +65,11 @@ public class Milky
     public static CommonProxy proxy;
 
     public static final Logger logger = LogManager.getLogger(Milky.MOD_ID);
+    
+    static
+    {
+        FluidRegistry.enableUniversalBucket();
+    }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -105,6 +111,6 @@ public class Milky
     	OreDictionary.registerOre("listAllchocolatemilk", ModItems.CHOC_MILK_BOTTLE);
     	OreDictionary.registerOre("listAllstrawberrymilk", ModItems.STRAWB_MILK_BOTTLE);
     	OreDictionary.registerOre("listAllcaramelmilk", ModItems.CARAMEL_MILK_BOTTLE);
-    	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bottles.");    	
+    	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bottles.");   	
     }
 }
