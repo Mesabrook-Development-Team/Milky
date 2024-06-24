@@ -66,9 +66,12 @@ public class Milky
 
     public static final Logger logger = LogManager.getLogger(Milky.MOD_ID);
     
+    // Forge Devs: "Actually just call it statically in your mod class."
+    // Milky: Say less.
     static
     {
         FluidRegistry.enableUniversalBucket();
+        logger.info("Milky Universal Buckets Enabled.");
     }
 
     @EventHandler
