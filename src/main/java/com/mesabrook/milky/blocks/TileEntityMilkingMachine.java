@@ -3,11 +3,13 @@ package com.mesabrook.milky.blocks;
 import com.mesabrook.milky.init.ModFluids;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.EnergyStorage;
@@ -76,6 +78,10 @@ public class TileEntityMilkingMachine extends TileEntity
         {
             energyStorage.extractEnergy(ENERGY_PER_OPERATION, false);
             milkTank.fill(new FluidStack(ModFluids.liquid_milk, MILK_PRODUCTION_AMOUNT), true);
+            if(world.rand.nextInt(25) >= 23)
+            {
+            	world.playSound(null, pos, SoundEvents.ENTITY_COW_MILK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            }
             markDirty();
         }
         else
@@ -111,6 +117,11 @@ public class TileEntityMilkingMachine extends TileEntity
     {
         milkTank.drain(amount, true);
         markDirty();
+    }
+    
+    public void makeEjectMilk()
+    {
+    	ejectMilk();
     }
 
     private void ejectMilk()

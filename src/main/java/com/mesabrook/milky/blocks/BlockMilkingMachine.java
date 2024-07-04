@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.mesabrook.milky.Milky;
+import com.mesabrook.milky.config.ModConfig;
 import com.mesabrook.milky.handlers.IHasModel;
 import com.mesabrook.milky.init.ModBlocks;
 import com.mesabrook.milky.init.ModFluids;
@@ -15,9 +16,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityLlama;
 import net.minecraft.entity.passive.EntitySheep;
@@ -28,8 +32,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -88,6 +95,14 @@ public class BlockMilkingMachine extends Block implements IHasModel
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) 
     {
+    	if(ModConfig.GENERAL.milkingMachineRequiresRedstone)
+    	{
+        	if(!worldIn.isBlockPowered(pos) || worldIn.isBlockIndirectlyGettingPowered(pos) == 0)
+        	{
+        		return;
+        	}
+    	}
+    	
         if (!worldIn.isRemote) 
         {
             TileEntity tileEntity = worldIn.getTileEntity(pos);
@@ -97,9 +112,25 @@ public class BlockMilkingMachine extends Block implements IHasModel
                 if (entityIn instanceof EntityCow || entityIn instanceof EntitySheep || entityIn instanceof EntityLlama) 
                 {
                     milkProducer.produceMilk();
+                    if(worldIn.rand.nextInt(1000) == 1)
+                    {
+                    	entityIn.attackEntityFrom(DamageSource.CACTUS, 1F);
+                    }
+                    if(((EntityLivingBase) entityIn).getHealth() <= 5F)
+                	{
+                		if(!worldIn.isRemote)
+                		{
+                			if(((EntityLivingBase) entityIn).getHealth() < 3F)
+                			{
+                    			worldIn.newExplosion(entityIn, entityIn.posX, entityIn.posY + 1, entityIn.posZ, 0F, false, true);
+                			}                    			
+                		}
+                		entityIn.setFire(420);
+                	}
                 }
             }
         }
+        
         super.onEntityWalk(worldIn, pos, entityIn);
     }
     
@@ -111,36 +142,96 @@ public class BlockMilkingMachine extends Block implements IHasModel
             TileEntity tileEntity = worldIn.getTileEntity(pos);
             ItemStack heldItem = playerIn.getHeldItem(hand);
 
-            if (tileEntity instanceof TileEntityMilkingMachine && heldItem.getItem() == Items.BUCKET)
+            if (tileEntity instanceof TileEntityMilkingMachine)
             {
                 TileEntityMilkingMachine milkProducer = (TileEntityMilkingMachine) tileEntity;
 
-                if (milkProducer.getMilkAmount() >= 1000)
+                if (milkProducer.getMilkAmount() >= Fluid.BUCKET_VOLUME && heldItem.getItem() == Items.BUCKET)
                 {
-                    milkProducer.drainMilk(1000);
+                    milkProducer.drainMilk(Fluid.BUCKET_VOLUME);
                     ItemStack milkBucket = FluidUtil.getFilledBucket(new FluidStack(ModFluids.liquid_milk, Fluid.BUCKET_VOLUME));
                     
                     if (!playerIn.inventory.addItemStackToInventory(milkBucket))
                     {
                         playerIn.dropItem(milkBucket, false);
                     }
+                    
+                    worldIn.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
                     if(!playerIn.isCreative()) heldItem.shrink(1);
-                    playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-                    playerIn.swingArm(hand);
-                    
                     return true;
                 } 
+                
+                if (milkProducer.getMilkAmount() >= 250 && heldItem.getItem() == Items.GLASS_BOTTLE)
+                {
+                	milkProducer.drainMilk(250);
+                    ItemStack milkBucket = new ItemStack(ModItems.MILK_BOTTLE);
+                    
+                    if (!playerIn.inventory.addItemStackToInventory(milkBucket))
+                    {
+                        playerIn.dropItem(milkBucket, false);
+                    }
+                    
+                    worldIn.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+                    if(!playerIn.isCreative()) heldItem.shrink(1);
+                    return true;
+                }
             }
         }
+        playerIn.swingArm(hand);
         return false;
+    }
+    
+    @Override
+    public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean causesSuffocation(IBlockState state)
+    {
+        return false;
+    }
+
+    @Override
+    public float getAmbientOcclusionLightValue(IBlockState state)
+    {
+        return 1;
+    }
+
+    @Override
+    public BlockRenderLayer getBlockLayer()
+    {
+        return BlockRenderLayer.CUTOUT;
     }
     
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		tooltip.add(TextFormatting.YELLOW + "A simple automatic milking machine. Requires FE to function.");
-		tooltip.add(TextFormatting.YELLOW + "Has an 8000mB internal storage tank and can output to compatible tanks using pipes.");
+		if(GuiScreen.isShiftKeyDown())
+		{
+			tooltip.add(TextFormatting.YELLOW + "A simple automatic milking machine. Requires FE to function.");
+			tooltip.add(TextFormatting.YELLOW + "Can output to compatible tanks using pipes.");
+			tooltip.add(TextFormatting.RED + "Be warned, this machine is a bit rough and is known for randomly hurting the mobs it's milking... and then setting them on fire and blowing them up...");
+		}
+		else
+		{
+			tooltip.add(TextFormatting.YELLOW + "Press [" + Minecraft.getMinecraft().gameSettings.keyBindSneak.getDisplayName() + "] for more info.");
+		}
 	}
 }

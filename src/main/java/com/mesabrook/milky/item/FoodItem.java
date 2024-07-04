@@ -70,7 +70,7 @@ public class FoodItem extends ItemFood implements IHasModel
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         if (!worldIn.isRemote && stack.getItem() == ModItems.MILK_BOTTLE) entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
-        if(ModConfig.general.flavoredMilkPotionEffects)
+        if(ModConfig.GENERAL.flavoredMilkPotionEffects)
         {
         	if (!worldIn.isRemote && stack.getItem() == ModItems.CHOC_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3064, 0));
             if (!worldIn.isRemote && stack.getItem() == ModItems.STRAWB_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 2064, 0));

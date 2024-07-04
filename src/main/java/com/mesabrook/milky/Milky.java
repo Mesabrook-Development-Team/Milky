@@ -114,6 +114,9 @@ public class Milky
     	OreDictionary.registerOre("listAllchocolatemilk", ModItems.CHOC_MILK_BOTTLE);
     	OreDictionary.registerOre("listAllstrawberrymilk", ModItems.STRAWB_MILK_BOTTLE);
     	OreDictionary.registerOre("listAllcaramelmilk", ModItems.CARAMEL_MILK_BOTTLE);
-    	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bottles.");   	
+    	logger.info("[" + MOD_NAME + "] OreDict: Registered Milk Bottles.");
+    	logger.info("[" + MOD_NAME + "] OreDict: Registered Items...");
+    	OreDictionary.registerOre("foodCaramel", ModItems.CARAMEL_ITEM);
+    	logger.info("[" + MOD_NAME + "] OreDict: Registered Items.");
     }
 }
