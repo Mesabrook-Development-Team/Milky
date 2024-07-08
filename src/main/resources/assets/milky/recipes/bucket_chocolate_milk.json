@@ -1,0 +1,16 @@
+{
+    "type": "milky:milk_based",
+    "ingredients": [
+        {
+			"item": "minecraft:milk_bucket"
+		},
+		{
+			"item": "minecraft:dye",
+			"data": 3
+		}
+    ],
+    "result": 
+    {
+        "bucket": "liquid_chocolate_milk"
+    }
+}

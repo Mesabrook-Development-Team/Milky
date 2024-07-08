@@ -1,0 +1,5 @@
+{
+	"recipes": {
+		"milk_based": "com.mesabrook.milky.util.MilkBasedRecipeFactory"
+	}
+}
