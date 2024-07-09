@@ -3,6 +3,7 @@ package com.mesabrook.milky.util;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -20,7 +21,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-public class MilkBasedRecipeFactory implements IRecipeFactory {
+public class BucketResultShaplessRecipeFactory implements IRecipeFactory {
 	@Override
 	public IRecipe parse(JsonContext context, JsonObject json) {
 		final String group = JsonUtils.getString(json, "group", "");
@@ -28,6 +29,10 @@ public class MilkBasedRecipeFactory implements IRecipeFactory {
 		JsonObject resultObject = JsonUtils.getJsonObject(json, "result");
 		String fluidName = JsonUtils.getString(resultObject, "bucket");
 		Fluid fluid = FluidRegistry.getFluid(fluidName);
+		if (fluid == null)
+		{
+			throw new JsonSyntaxException("Could not find fluid '" + fluidName + "'");
+		}
 		final ItemStack result = FluidUtil.getFilledBucket(new FluidStack(fluid, 1000));
 
 		return new ShapelessOreRecipe(group.isEmpty() ? null : new ResourceLocation(group), ingredients, result)

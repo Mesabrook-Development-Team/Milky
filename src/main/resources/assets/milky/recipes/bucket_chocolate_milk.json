@@ -1,8 +1,9 @@
 {
-    "type": "milky:milk_based",
+    "type": "milky:shapeless_bucket_result",
     "ingredients": [
         {
-			"item": "minecraft:milk_bucket"
+			"type": "milky:bucket",
+			"bucket": "liquid_milk"
 		},
 		{
 			"item": "minecraft:dye",
