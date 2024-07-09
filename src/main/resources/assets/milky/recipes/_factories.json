@@ -1,0 +1,8 @@
+{
+	"recipes": {
+		"shapeless_bucket_result": "com.mesabrook.milky.util.BucketResultShaplessRecipeFactory"
+	},
+	"ingredients": {
+		"bucket": "com.mesabrook.milky.util.BucketIngredientFactory"
+	}
+}
