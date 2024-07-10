@@ -1,0 +1,16 @@
+{
+    "type": "milky:shapeless_bucket_result",
+    "ingredients": [
+        {
+			"type": "milky:bucket",
+			"bucket": "liquid_milk"
+		},
+		{
+			"item": "milky:strawberry_syrup"
+		}
+    ],
+    "result": 
+    {
+        "bucket": "liquid_strawberry_milk"
+    }
+}

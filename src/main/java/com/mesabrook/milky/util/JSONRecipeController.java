@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
@@ -24,6 +25,11 @@ public class JSONRecipeController
     		ResourceLocation tech = new ResourceLocation("milky:milking_machine_tech");
     		ResourceLocation no_tech = new ResourceLocation("milky:milking_machine_no_tech");
     		
+    		// Crafting buckets recipes
+    		ResourceLocation choc = new ResourceLocation("milky:bucket_chocolate_milk");
+    		ResourceLocation strwb = new ResourceLocation("milky:bucket_strawberry_milk");
+    		ResourceLocation crml = new ResourceLocation("milky:bucket_caramel_milk");
+    		
     		IForgeRegistryModifiable modRegistry = (IForgeRegistryModifiable) event.getRegistry();
     		
     		String oreName = "ingotSteel";
@@ -33,12 +39,25 @@ public class JSONRecipeController
     		{
     			// Tech mod installed, disable no_tech recipe.
     			modRegistry.remove(no_tech);
+
     			Milky.logger.info("ingotSteel found. Tech mod is likely installed. Vanilla-friendly milking machine recipe disabled.");
     			Milky.logger.info("ingotSteel has been found in the following locations below:");
     			for (ItemStack ore : ores) 
     			{
                     Milky.logger.info("- " + ore.getDisplayName());
                 }
+    			
+    			if(Loader.isModLoaded("immersiveengineering"))
+    			{
+        			modRegistry.remove(choc);
+        			modRegistry.remove(strwb);
+        			modRegistry.remove(crml);
+        			Milky.logger.info("Immersive Engineering has been detected, disabling vanilla-friendly flavored milk crafting recipes.");
+    			}
+    			else
+    			{
+    				Milky.logger.info("Immersive Engineering has NOT been detected. Flavored milk vanilla crafting recipes enabled.");
+    			}
     		}
     		else
     		{
