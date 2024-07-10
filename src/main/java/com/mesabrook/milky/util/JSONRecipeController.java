@@ -30,6 +30,12 @@ public class JSONRecipeController
     		ResourceLocation strwb = new ResourceLocation("milky:bucket_strawberry_milk");
     		ResourceLocation crml = new ResourceLocation("milky:bucket_caramel_milk");
     		
+    		// Crafting bottle recipes
+    		ResourceLocation milk_b = new ResourceLocation("milky:milk_bottle");
+    		ResourceLocation choc_b = new ResourceLocation("milky:choc_milk_bottle");
+    		ResourceLocation strwb_b = new ResourceLocation("milky:strawberry_milk_bottle");
+    		ResourceLocation crml_b = new ResourceLocation("milky:caramel_milk_bottle");
+    		
     		IForgeRegistryModifiable modRegistry = (IForgeRegistryModifiable) event.getRegistry();
     		
     		String oreName = "ingotSteel";
@@ -52,6 +58,11 @@ public class JSONRecipeController
         			modRegistry.remove(choc);
         			modRegistry.remove(strwb);
         			modRegistry.remove(crml);
+        			
+        			modRegistry.remove(crml_b);
+        			modRegistry.remove(milk_b);
+        			modRegistry.remove(choc_b);
+        			modRegistry.remove(strwb_b);
         			Milky.logger.info("Immersive Engineering has been detected, disabling vanilla-friendly flavored milk crafting recipes.");
     			}
     			else
