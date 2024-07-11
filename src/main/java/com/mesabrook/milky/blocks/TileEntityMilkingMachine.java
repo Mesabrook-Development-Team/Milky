@@ -245,4 +245,14 @@ public class TileEntityMilkingMachine extends TileEntity
     {
         readFromNBT(pkt.getNbtCompound());
     }
+    
+    @Override
+    public NBTTagCompound getUpdateTag() {
+    	return this.writeToNBT(new NBTTagCompound());
+    }
+    
+    @Override
+    public void handleUpdateTag(NBTTagCompound tag) {
+    	this.readFromNBT(tag);
+    }
 }
