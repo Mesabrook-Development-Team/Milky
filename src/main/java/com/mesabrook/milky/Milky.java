@@ -95,10 +95,6 @@ public class Milky
         	logger.info("[" + MOD_NAME + "] Immersive Engineering detected. Machine recipes added.");
         	IERecipes.registerMachineRecipes();
         }
-        else
-        {
-        	// Load the custom recipes since player doesn't have IE or PHC installed.
-        }
         
         MinecraftForge.EVENT_BUS.register(new ModEvents());
         
