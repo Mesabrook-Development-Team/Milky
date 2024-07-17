@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.mesabrook.milky.Milky;
+import com.mesabrook.milky.advancements.Triggers;
 import com.mesabrook.milky.config.ModConfig;
 import com.mesabrook.milky.handlers.IHasModel;
 import com.mesabrook.milky.init.ModBlocks;
@@ -95,16 +96,9 @@ public class BlockMilkingMachine extends Block implements IHasModel
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) 
     {
-    	if(ModConfig.GENERAL.milkingMachineRequiresRedstone)
-    	{
-        	if(!worldIn.isBlockPowered(pos) || worldIn.isBlockIndirectlyGettingPowered(pos) == 0)
-        	{
-        		return;
-        	}
-    	}
-    	
         if (!worldIn.isRemote) 
         {
+        	EntityPlayer player = worldIn.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false);
             TileEntity tileEntity = worldIn.getTileEntity(pos);
             if (tileEntity instanceof TileEntityMilkingMachine) 
             {
@@ -112,6 +106,12 @@ public class BlockMilkingMachine extends Block implements IHasModel
                 if (entityIn instanceof EntityCow || entityIn instanceof EntitySheep || entityIn instanceof EntityLlama) 
                 {
                     milkProducer.produceMilk();
+                    
+                    if(entityIn instanceof EntitySheep || entityIn instanceof EntityLlama)
+                    {
+                    	Triggers.trigger(Triggers.EXOTIC_MILK, player);
+                    }
+                    
                     if(worldIn.rand.nextInt(1000) == 1)
                     {
                     	entityIn.attackEntityFrom(DamageSource.CACTUS, 1F);

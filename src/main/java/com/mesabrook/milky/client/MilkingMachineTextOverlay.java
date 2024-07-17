@@ -56,13 +56,37 @@ public class MilkingMachineTextOverlay
         FontRenderer fontRenderer = mc.fontRenderer;
         int x = screenWidth / 2 + 10;
         int y = screenHeight / 2 - 30;
+        String error = "";
+        int energy = 0;
+        
+        if(machine.getEnergyStored() < 20)
+        {
+        	energy = 0;
+        }
+        else
+        {
+        	energy = machine.getEnergyStored();
+        }
 
         fontRenderer.drawStringWithShadow(TextFormatting.YELLOW + "Milking Machine", x, y, 0xFFFFFF);
         y += 10;
-        fontRenderer.drawStringWithShadow(TextFormatting.GRAY + "Energy Stored: " + machine.getEnergyStored() + "/" + machine.getMaxEnergy() + " FE", x, y, 0xFFFFFF);
+        fontRenderer.drawStringWithShadow(TextFormatting.GRAY + "Energy Stored: " + energy + "/" + machine.getMaxEnergy() + " FE", x, y, 0xFFFFFF);
         y += 10;
         fontRenderer.drawStringWithShadow(TextFormatting.GRAY + "Energy Usage: " + machine.getEnergyUsage() + " FE/t", x, y, 0xFFFFFF);
         y += 10;
         fontRenderer.drawStringWithShadow(TextFormatting.GRAY + "Milk Tank Level: " + machine.milkTank.getFluidAmount() + " mB", x, y, 0xFFFFFF);
+        y += 20;
+        
+        if(machine.milkTank.getFluidAmount() >= machine.MAX_MILK)
+        {
+        	error = "Machine Offline! Internal milk tank is full!";
+        	fontRenderer.drawStringWithShadow(TextFormatting.RED + error, x, y, 0xFFFFFF);
+        }
+        
+        if(machine.getEnergyStored() <= 20)
+        {
+        	error = "Machine Offline! No energy!";
+        	fontRenderer.drawStringWithShadow(TextFormatting.RED + error, x, y, 0xFFFFFF);
+        }
     }
 }

@@ -18,9 +18,6 @@ public class ModConfig {
     {
     	@Comment("Should the flavored milks (chocolate, strawberry, and caramel) give potion effects when used? [default: true]")
     	public boolean flavoredMilkPotionEffects = true;
-    	
-    	@Comment("Should the Milking Machine require a Redstone signal to function when provided with energy? [default: true]")
-    	public boolean milkingMachineRequiresRedstone = true;
     }
 
     @Mod.EventBusSubscriber(modid = Milky.MOD_ID)

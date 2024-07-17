@@ -22,3 +22,9 @@ item.strawberry_syrup.name=Strawberry Syrup
 #Blocks
 tile.milking_machine.name=Milking Machine
 tile.solar_generator.name=Crappy Solar Generator
+
+#Advancements
+advancements.exotic_milk=Exotic Milks
+advancements.exotic_milk.desc=Milk a Llama or Sheep.
+advancements.title=Milky
+advancements.title.desc=Milky

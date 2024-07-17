@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "milky:milk_bottle"
+        },
+        "title": {
+            "translate": "advancements.title"
+        },
+        "description": {
+            "translate": "advancements.title.desc"
+        },
+		"background": "minecraft:textures/blocks/dirt.png",
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "criteria": {
+        "tick": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}

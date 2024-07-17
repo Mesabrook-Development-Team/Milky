@@ -1,5 +1,6 @@
 package com.mesabrook.milky;
 
+import com.mesabrook.milky.advancements.Triggers;
 import com.mesabrook.milky.client.MilkingMachineTextOverlay;
 import com.mesabrook.milky.config.ModConfig;
 import com.mesabrook.milky.handlers.ModEvents;
@@ -80,6 +81,7 @@ public class Milky
     	logger.info("[" + MOD_NAME + "] Mod Pre-Initialization.");
         logger.info("[" + MOD_NAME + "] Registering Milky config.");
         MinecraftForge.EVENT_BUS.register(new ModConfig());
+        Triggers.init();
 
         proxy.Preinit();
     }
