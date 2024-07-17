@@ -16,3 +16,15 @@ item.milk_bottle.name=Milk Bottle
 item.chocolate_milk_bottle.name=Chocolate Milk Bottle
 item.strawberry_milk_bottle.name=Strawberry Milk Bottle
 item.caramel_milk_bottle.name=Caramel Milk Bottle
+item.caramel_item.name=Caramel
+item.strawberry_syrup.name=Strawberry Syrup
+
+#Blocks
+tile.milking_machine.name=Milking Machine
+tile.solar_generator.name=Crappy Solar Generator
+
+#Advancements
+advancements.exotic_milk=Exotic Milks
+advancements.exotic_milk.desc=Milk a Llama or Sheep.
+advancements.title=Milky
+advancements.title.desc=Milky

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config.LangKey("milky.config.title")
 public class ModConfig {
     @Config.Comment({"General settings"})
-    public static General general = new General();
+    public static General GENERAL = new General();
 
     public static class General
     {

@@ -1,0 +1,20 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:milk_bucket"
+        },
+        "title": {
+            "translate": "advancements.exotic_milk"
+        },
+        "description": {
+            "translate": "advancements.exotic_milk.desc"
+        },
+        "announce_to_chat": true
+    },
+	"parent": "milky:root",
+    "criteria": {
+        "tick": {
+            "trigger": "milky:exotic_milk"
+        }
+    }
+}

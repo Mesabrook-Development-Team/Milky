@@ -1,0 +1,17 @@
+{
+    "type": "milky:shapeless_bucket_result",
+    "ingredients": [
+        {
+			"type": "milky:bucket",
+			"bucket": "liquid_milk"
+		},
+		{
+			"item": "minecraft:dye",
+			"data": 3
+		}
+    ],
+    "result": 
+    {
+        "bucket": "liquid_chocolate_milk"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+			"type": "milky:bucket",
+			"bucket": "liquid_chocolate_milk"
+		},
+		{
+			"item": "minecraft:glass_bottle"
+		}
+    ],
+    "result": 
+    {
+        "item": "milky:chocolate_milk_bottle",
+		"count": 1
+    }
+}

@@ -1,6 +1,8 @@
 package com.mesabrook.milky.proxy;
 
 import com.mesabrook.milky.Milky;
+import com.mesabrook.milky.client.MilkingMachineTextOverlay;
+import com.mesabrook.milky.client.SolarGeneratorTextOverlay;
 import com.mesabrook.milky.init.ModFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -11,6 +13,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -29,7 +32,9 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void Init()  
 	{
-
+		Milky.logger.info("Registered client-side text overlays.");
+		MinecraftForge.EVENT_BUS.register(new MilkingMachineTextOverlay());
+		MinecraftForge.EVENT_BUS.register(new SolarGeneratorTextOverlay());
 	}
 	
 	public void registerItemRenderer(Item item, int meta, String id) 

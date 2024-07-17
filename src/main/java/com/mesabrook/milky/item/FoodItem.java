@@ -21,14 +21,14 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemMilkBottle extends ItemFood implements IHasModel
+public class FoodItem extends ItemFood implements IHasModel
 {
-	public ItemMilkBottle(String name)
+	public FoodItem(String name, int amount, float saturation, int stackSize)
 	{
 		super(0, 0.0F, false);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setMaxStackSize(1);
+		setMaxStackSize(stackSize);
 		setCreativeTab(CreativeTabs.FOOD);
 		
 		ModItems.ITEMS.add(this);
@@ -49,7 +49,14 @@ public class ItemMilkBottle extends ItemFood implements IHasModel
     @Override
     public EnumAction getItemUseAction(ItemStack itemStack)
     {
-    	return EnumAction.DRINK;
+    	if(itemStack.getUnlocalizedName().contains("bottle"))
+    	{
+    		return EnumAction.DRINK;
+    	}
+    	else
+    	{
+    		return EnumAction.EAT;
+    	}
     }
     
     @Override
@@ -63,7 +70,7 @@ public class ItemMilkBottle extends ItemFood implements IHasModel
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         if (!worldIn.isRemote && stack.getItem() == ModItems.MILK_BOTTLE) entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
-        if(ModConfig.general.flavoredMilkPotionEffects)
+        if(ModConfig.GENERAL.flavoredMilkPotionEffects)
         {
         	if (!worldIn.isRemote && stack.getItem() == ModItems.CHOC_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 3064, 0));
             if (!worldIn.isRemote && stack.getItem() == ModItems.STRAWB_MILK_BOTTLE) entityLiving.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 2064, 0));

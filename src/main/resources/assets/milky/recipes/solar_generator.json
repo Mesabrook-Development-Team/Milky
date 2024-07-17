@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "IBI",
+    "IEI"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:daylight_detector"
+    },
+    "E": {
+      "item": "minecraft:emerald_block"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "blockIron"
+    },
+    "B": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "milky:solar_generator",
+    "count": 1
+  }
+}

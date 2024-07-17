@@ -1,0 +1,16 @@
+{
+    "type": "milky:shapeless_bucket_result",
+    "ingredients": [
+        {
+			"type": "milky:bucket",
+			"bucket": "liquid_milk"
+		},
+		{
+			"item": "milky:caramel_item"
+		}
+    ],
+    "result": 
+    {
+        "bucket": "liquid_caramel_milk"
+    }
+}
